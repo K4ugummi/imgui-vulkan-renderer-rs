@@ -1,5 +1,6 @@
 [package]
 name = "imgui-vulkan-renderer-rs"
+description = "Vulkan renderer for imgui-glfw-rs"
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
