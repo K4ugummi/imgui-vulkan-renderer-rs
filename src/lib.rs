@@ -1,10 +1,23 @@
-//! Vulkan renderer backend for [imgui-rs](https://docs.rs/imgui) using
-//! [ash](https://docs.rs/ash).
+//! Vulkan renderer for [Dear ImGui](https://github.com/ocornut/imgui)
+//! via the [`imgui`](https://docs.rs/imgui) crate and
+//! [`ash`](https://docs.rs/ash).
 //!
-//! # Usage
+//! This crate provides a [`Renderer`] that loads pre-compiled SPIR-V shaders,
+//! manages GPU resources (buffers, images, descriptor sets), and converts imgui
+//! draw commands into Vulkan command buffer recordings. The renderer owns all of
+//! its Vulkan objects and destroys them on [`Drop`].
+//!
+//! Pair this crate with
+//! [`imgui-glfw-rs`](https://crates.io/crates/imgui-glfw-rs) for a complete
+//! GLFW + Vulkan + Dear ImGui integration.
+//!
+//! # Example
 //!
 //! ```rust,ignore
+//! use imgui::Context;
 //! use imgui_vulkan_renderer_rs::{Renderer, RendererCreateInfo};
+//!
+//! let mut imgui = Context::create();
 //!
 //! let create_info = RendererCreateInfo {
 //!     device: device.clone(),
@@ -13,9 +26,10 @@
 //!     command_pool,
 //!     queue,
 //! };
-//! let mut renderer = Renderer::new(&mut imgui, &create_info)?;
+//! let mut renderer = Renderer::new(&mut imgui, &create_info)
+//!     .expect("Failed to initialize renderer");
 //!
-//! // In your render loop, after building the UI:
+//! // In your main loop, after building the imgui frame:
 //! let draw_data = imgui.render();
 //! renderer.render(draw_data, command_buffer)?;
 //! ```

@@ -1,9 +1,16 @@
 [package]
 name = "imgui-vulkan-renderer-rs"
-description = "Vulkan renderer for imgui-glfw-rs"
-version = "0.1.0"
-edition = "2024"
+description = "Vulkan renderer for imgui-rs"
+version = "0.1.1"
+authors = ["K4ugummi <stephan.schauerte@gmail.com>"]
+homepage = "https://github.com/K4ugummi/imgui-vulkan-renderer-rs"
+repository = "https://github.com/K4ugummi/imgui-vulkan-renderer-rs"
+readme = "README.md"
+categories = ["gui", "rendering::graphics-api"]
+keywords = ["imgui", "vulkan", "ash", "renderer", "gui"]
 license = "MIT OR Apache-2.0"
+edition = "2024"
+rust-version = "1.85"
 
 [dependencies]
 imgui = "0.12.0"
